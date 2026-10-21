@@ -1,0 +1,11 @@
+__pycache__/
+
+*.pyc
+bild/
+build/
+install/
+
+
+log/
+eof
+eof
