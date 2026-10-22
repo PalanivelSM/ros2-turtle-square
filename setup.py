@@ -25,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             'move_forward = turtle_square.move_forward:main',
+            'keyboard_move = turtle_square.keyboard_move:main',
         ],
     },
 )

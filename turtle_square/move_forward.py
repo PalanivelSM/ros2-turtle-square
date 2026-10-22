@@ -1,6 +1,6 @@
 import rclpy # Ros client library for Python
 from rclpy.node import Node 
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import Twist, Pose
 
 
 class MoveForward(Node):
@@ -12,13 +12,21 @@ class MoveForward(Node):
 
             #PUblisher
             self.pub = self.create_publisher(Twist, 'turtle1/cmd_vel', 10)
-            self.timer = self.create_timer(0.1, self.send_command)
+            self.sub = self.create_subscription(Pose, 'tuuurtle/status_pos', 10)
+            self.timer1 = self.create_timer(0.1, self.send_command)
+            self.timer2 = self.create_timer(0.1, self.get_status)
 
 
     def send_command(self):
           cmd = Twist()
           cmd.linear.x = 1.0
           self.pub.publish(cmd)
+
+
+    def get_status(self):
+          stat = Pose()
+          print(self.stat.position.x)
+
 
 
 def main(args = None):
